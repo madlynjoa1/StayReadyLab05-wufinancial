@@ -1,45 +1,62 @@
 package com.codedifferently;
 
-public class Convert extends Rates{
-    public Double dollarToEuro(double amount){
-        double num= (getusDollar()/getEuro()) *amount;
-        return num;
-    }
-    public Double euroTobritishPound(double amount){
-        double num = (getEuro()/getBritishPound()) * amount;
-        return num;
-    }
-    public Double EuroTodollar(double amount){
-        double num = (getEuro()/getusDollar()) * amount;
-        return num; 
-    }
-    public Double britishPoundToindianRupee(double amount){
-        double num = (getBritishPound()/getIndianRupee()) * amount;
-        return num;
-    }
-    public Double indianRupeeTOcanadianDollar(double amount){
-        double num = (getIndianRupee()/getCanadianDollar()) * amount;
-        return num;
-    }
-    public Double canadianDollarTosingaporeDollar(double amount){
-        double num = (getCanadianDollar()/getSingaporeDollar()) * amount;
-        return num;
+public class Convert{
+    private Double usDollar = 1.0;
+    private Double euro = 0.94;
+    private Double britishPound = 0.82;
+    private Double indianRupee = 68.32;
+    private Double australianDollar= 1.35;
+    private Double canadianDollar=1.32;
+    private Double singaporeDollar= 1.43;
+    private Double swissFranc= 1.01;
+    private Double malaysianRinggit= 4.47;
+    private Double japaneseYen= 115.84;
+    private Double yuanRenminbi= 6.92;
+
+    //TOUs() usDolar/ currentCurrency
+
+     public double toUs(String currentCurrency){
+         double rate;
+         switch(currentCurrency){
+             case("euro"):
+                 rate= usDollar/euro;
+                 break;
+             case("britishPound"):
+                 rate = usDollar/britishPound;
+                 break;
+             case("indianRupee"):
+                 rate = usDollar/indianRupee;
+                 break;
+             case("australianDollar"):
+                 rate = usDollar/australianDollar;
+                 break;
+             case("canadianDollar"):
+                rate = usDollar/canadianDollar;
+                break;
+             case("singaporeDollar"):
+                 rate= usDollar/singaporeDollar;
+                 break;
+             case("swissFranc"):
+                 rate= usDollar/swissFranc;
+                 break;
+             case("malaysianRinggit"):
+                 rate= usDollar/malaysianRinggit;
+                 break;
+             case("japaneseYen"):
+                 rate= usDollar/japaneseYen;
+                 break;
+             case("yuanRenminbi"):
+                 rate = usDollar/yuanRenminbi;
+             default:
+                 return 0.0;
+         }
+            return rate;
+         }
+
+    public double convert(double amount, String currCurrency, String toCurrency){
+         double firstRate= toUs(currCurrency);
+         double secondRate =1/toUs(toCurrency);
+         return amount* firstRate* secondRate;
     }
 
-    public Double singaporDolToSwissFranc(double amount){
-        double num = (getSingaporeDollar()/getSwissFranc())*amount;
-        return num;
-    }
-    public Double swissFrancToMalaysianRinggit(Double amount){
-        double num = (getSwissFranc()/getMalaysianRinggit())*amount;
-        return num;
-    }
-    public Double malaysianRinToJapaneseYen(Double amount){
-        double num = (getMalaysianRinggit()/getJapaneseYen())*amount;
-        return num;
-    }
-    public Double japaneseYenToChineseYuan(Double amount){
-        double num=(getJapaneseYen()/getYuanRenminbi())*amount;
-        return num;
-    }
 }
